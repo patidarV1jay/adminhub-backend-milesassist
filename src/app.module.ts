@@ -5,6 +5,7 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { validate } from './config/env.validation';
 import { PrismaModule } from './prisma/prisma.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { BookingsModule } from './modules/bookings/bookings.module';
 import { HealthController } from './health/health.controller';
 import { MetricsInterceptor } from './modules/metrics/metrics.interceptor';
 import { MetricsModule } from './modules/metrics/metrics.module';
@@ -24,7 +25,7 @@ import { UsersModule } from './modules/users/users.module';
     MetricsModule,
     UsersModule,
     TransactionsModule,
-
+    BookingsModule,
   ],
   controllers: [HealthController],
   providers: [
