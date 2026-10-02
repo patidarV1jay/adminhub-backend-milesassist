@@ -11,6 +11,7 @@ import { MetricsModule } from './modules/metrics/metrics.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
 import { RolesGuard } from './modules/auth/guards/roles.guard';
+import { TransactionsModule } from './modules/transactions/transactions.module';
 import { UsersModule } from './modules/users/users.module';
 
 @Module({  
@@ -21,7 +22,8 @@ import { UsersModule } from './modules/users/users.module';
     AuthModule,
     DashboardModule,
     MetricsModule,
-    UsersModule
+    UsersModule,
+    TransactionsModule,
 
   ],
   controllers: [HealthController],

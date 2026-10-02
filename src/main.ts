@@ -32,6 +32,9 @@ async function bootstrap() {
   SwaggerModule.setup('docs', app, document, {
     swaggerOptions: { persistAuthorization: true },
   });
+  app.getHttpAdapter().get('/docs-json', (req, res) => {
+  res.json(document);
+});
 
   const port = Number(process.env.PORT ?? 3000);
   await app.listen(port);
