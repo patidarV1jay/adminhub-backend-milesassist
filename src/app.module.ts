@@ -8,6 +8,7 @@ import { HealthController } from './health/health.controller';
 import { AuthModule } from './modules/auth/auth.module';
 import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
 import { RolesGuard } from './modules/auth/guards/roles.guard';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({  
   imports: [
@@ -15,6 +16,7 @@ import { RolesGuard } from './modules/auth/guards/roles.guard';
     ThrottlerModule.forRoot([{ ttl: 60_000, limit: 100 }]),
     PrismaModule,
     AuthModule,
+    UsersModule
 
   ],
   controllers: [HealthController],
