@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { UserRole, UserStatus } from '@prisma/client';
 import { compare } from 'bcryptjs';
 import { PrismaService } from '../../prisma/prisma.service';
+import { toUserResponse } from '../users/users.mapper';
 import type { JwtPayload } from './auth.types';
 import { LoginDto } from './dto/login.dto';
 
@@ -40,13 +41,13 @@ export class AuthService {
     return {
       accessToken: await this.jwt.signAsync(payload),
       tokenType: 'Bearer',
-      user: updated
+      user: toUserResponse(updated)
     };
   }
 
   async getProfile(userId: string) {
     const user = await this.prisma.user.findFirst({ where: { id: userId, deletedAt: null } });
     if (!user) throw new NotFoundException('User not found');
-    return user;
+    return toUserResponse(user);
   }
 }
